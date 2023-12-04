@@ -4,6 +4,11 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import CreateListing from "./pages/CreateListing";
+import UpdateListing from "./pages/UpdateListing";
+import Search from "./pages/Search";
+import Listing from "./pages/Listing";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 import Header from "./components/Header";
 
@@ -12,12 +17,19 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/sign-in" element={<SignIn />}></Route>
-        <Route path="/sign-up" element={<SignUp />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/listing/:id" element={<Listing />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/create-listing" element={<CreateListing />} />
+          <Route path="/update-listing/:id" element={<UpdateListing />} />
+        </Route>
       </Routes>
+
     </BrowserRouter>
   );
 }
